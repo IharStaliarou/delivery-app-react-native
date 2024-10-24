@@ -1,7 +1,7 @@
 import Links from "../links/links";
 import BeansLogo from "../beans-logo/beans-logo";
 
-import './_footer.scss';
+import './footer.scss';
 
 const Footer = () => {
     return (

@@ -1,6 +1,6 @@
-import Links from '../links/links';
+import Links from '../../links/links';
 
-import './_nav-panel.scss';
+import './nav-panel.scss';
 
 const NavPanel = () => {
 

@@ -1,17 +1,17 @@
-import NavPanel from "../nav-panel/nav-panel";
-import Promo from "../promo/promo";
+import Header from "../header/header";
+import Promo from "../content/promo/promo";
+import OurBest from "../content/our-best/our-best";
 import Footer from "../footer/footer";
 
-import './_app.scss';
+import './app.scss';
 
 const App =  () => {
 
     return (
         <div className='app'>
-            <header className='header'>
-                <NavPanel />
-            </header>
+            <Header />
             <Promo />
+            <OurBest />
             <Footer />
         </div>
     )

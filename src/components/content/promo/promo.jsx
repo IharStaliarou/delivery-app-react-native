@@ -1,7 +1,7 @@
-import BeansLogo from '../beans-logo/beans-logo';
+import BeansLogo from '../../beans-logo/beans-logo';
 
-import './_promo.scss';
-import './../styles/_heading.scss';
+import './promo.scss';
+import './../../styles/heading.scss';
 
 const Promo = () => {
     return (
