@@ -7,14 +7,56 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  email      String   @unique
+  id         String    @id @default(uuid())
+  email      String    @unique
   password   String
-  name       String   @unique
-  avatarPath String   @default("/uploads/default-avatar.png") @map("avatar_path")
-  phone      String   @default("")
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @updatedAt @map("updated_at")
+  name       String    @unique
+  avatarPath String    @default("/uploads/default-avatar.png") @map("avatar_path")
+  phone      String    @default("")
+  favorites  Product[]
+  orders     Order[]
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
 
   @@map("users")
+}
+
+model Product {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  slug        String    @unique
+  description String
+  price       Int
+  image       String
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  user        User?     @relation(fields: [userId], references: [id])
+  userId      String?
+
+  @@map("products")
+}
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  slug      String    @unique
+  image     String
+  products  Product[]
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("categories")
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  reference String   @unique
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("orders")
 }
