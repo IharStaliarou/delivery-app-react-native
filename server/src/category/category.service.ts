@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'prisma/prisma.service';
 import { returnCategoryObject } from './return-category.object';
 import { CategoryDto } from './dto/category.dto';

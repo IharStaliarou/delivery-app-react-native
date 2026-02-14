@@ -10,6 +10,7 @@ import { hash, verify } from 'argon2';
 import { PrismaService } from 'prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
+import { JwtPayload } from './types/jwt.type';
 
 @Injectable()
 export class AuthService {
@@ -58,7 +59,7 @@ export class AuthService {
   }
 
   async getNewTokens(refreshToken: string) {
-    const result = await this.jwt.verifyAsync(refreshToken);
+    const result = await this.jwt.verifyAsync<JwtPayload>(refreshToken);
 
     if (!result) {
       throw new UnauthorizedException('Invalid refresh token');
